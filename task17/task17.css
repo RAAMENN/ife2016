@@ -1,0 +1,11 @@
+.aqi-chart-wrap {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+
+.aqi-chart-wrap .flez-item{
+	-webkit-flex: auto;
+	flex: auto;
+}
