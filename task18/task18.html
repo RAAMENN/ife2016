@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TASK18</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        margin: 10px;
+    }
+    
+    li {
+        display: inline-block;
+        list-style: none;
+        height: 40px;
+        background: #fea965;
+        color: white;
+        text-align: center;
+        line-height: 40px;
+        margin: 10px 10px 0 0;
+        padding: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="inputarea">
+        <button id="leftin">左侧入</button>
+        <button id="rightin">右侧入</button>
+        <button id="leftout">左侧出</button>
+        <button id="rightout">右侧出</button>
+        <ul id="displayarea">
+        </ul>
+    </div>
+</body>
+<script>
+function insertNode(id) {
+    var input = document.getElementById('inputarea');
+    var oUl = document.getElementById('displayarea');
+    var oLi = document.createElement('li');
+
+    oLi.innerHTML = input.value;
+
+    if (id === rightin) {
+        if (!oUl.firstChild) {
+            oUl.insertBefore(oLi, oUl.firstChild);
+        } else {
+            oUl.appendChild(oLi);
+        }
+    } else {
+        if (!oUl.firstChild) {
+            oUl.appendChild(oLi);
+        } else {
+            oUl.insertBefore(oLi, oUl.firstChild);
+
+        }
+    }
+}
+
+function deleteNode(id) {
+    var oUl = document.getElementById('displayarea');
+    if (id === leftout) {
+        oUl.removeChild(oUl.firstChild);
+    } else {
+        oUl.removeChild(oUl.lastChild);
+    }
+}
+
+function init() {
+    var oBtn1 = document.getElementById('rightin');
+    var oBtn2 = document.getElementById('leftin');
+    var oBtn3 = document.getElementById('leftout');
+    var oBtn4 = document.getElementById('rightout');
+    var aLi = document.getElementsByTagName('li');
+    var oUl = document.getElementById('displayarea');
+
+
+    oBtn1.onclick = function() {
+        insertNode(rightin);
+    };
+
+    oBtn2.onclick = function() {
+        insertNode(leftin);
+    };
+
+    oBtn3.onclick = function() {
+        deleteNode(leftout);
+    };
+
+    oBtn4.onclick = function() {
+        deleteNode(rightout);
+    };
+
+}
+
+init();
+</script>
+
+</html>
